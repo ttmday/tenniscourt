@@ -44,9 +44,12 @@ class Button extends StatelessWidget {
               : variant!.color,
           minWidth: width,
           height: height,
-          shape: const RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(AppDesign.radius - 12.0))),
+          shape: RoundedRectangleBorder(
+              borderRadius: const BorderRadius.all(
+                  Radius.circular(AppDesign.radius - 12.0)),
+              side: BorderSide(
+                  color: variant!.borderColor ?? Colors.transparent,
+                  width: variant?.borderColor != null ? 1.0 : 0.0)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -87,23 +90,37 @@ class Button extends StatelessWidget {
 
 enum ButtonVariant {
   primary(
-    color: Color(0xff84bc04),
-    textColor: AppColors.textSecondary,
-    disabledColor: Color.fromRGBO(130, 188, 0, .37),
-  ),
+      color: Color(0xff84bc04),
+      textColor: AppColors.textSecondary,
+      disabledColor: Color.fromRGBO(
+        130,
+        188,
+        0,
+        .37,
+      ),
+      borderColor: null),
+
   secondary(
-    color: Color.fromRGBO(155, 156, 157, .5),
-    textColor: AppColors.textSecondary,
-    disabledColor: Color.fromRGBO(61, 61, 61, .3),
+      color: Color.fromRGBO(155, 156, 157, .5),
+      textColor: AppColors.textSecondary,
+      disabledColor: Color.fromRGBO(61, 61, 61, .3),
+      borderColor: null),
+  outline(
+    color: AppColors.background,
+    textColor: AppColors.border,
+    disabledColor: AppColors.border,
+    borderColor: AppColors.border,
   );
 
   const ButtonVariant({
     required this.color,
     this.textColor = AppColors.textSecondary,
     this.disabledColor,
+    this.borderColor,
   });
 
   final Color color;
   final Color? textColor;
   final Color? disabledColor;
+  final Color? borderColor;
 }

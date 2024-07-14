@@ -316,7 +316,7 @@ class PitchReservationPayScreen extends StatelessWidget {
                       onPressed: () {
                         context.go(HomeRoute.path);
                       },
-                      variant: ButtonVariant.secondary,
+                      variant: ButtonVariant.outline,
                       title: 'Cancelar',
                     ),
                   ),

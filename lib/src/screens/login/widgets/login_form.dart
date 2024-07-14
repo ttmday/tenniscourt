@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,8 +22,6 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  bool _isSubmitting = false;
 
   @override
   void dispose() {
@@ -86,8 +82,6 @@ class _LoginFormState extends State<LoginForm> {
         Button(
           onPressed: onLogin,
           title: 'Iniciar sesión',
-          loading: _isSubmitting,
-          textLoading: 'Iniciando sesión',
           width: double.infinity,
         ),
         const SizedBox(
@@ -123,11 +117,6 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   onLogin() {
-    setState(() {
-      _isSubmitting = true;
-    });
-    sleep(const Duration(seconds: 2));
-
     context.go(HomeRoute.path);
   }
 }

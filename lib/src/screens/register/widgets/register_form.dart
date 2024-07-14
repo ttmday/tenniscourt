@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:tenniscourt/src/constants/images_assets.dart';
+import 'package:tenniscourt/src/routes/routes/tennis_court/routes/index.dart';
 
 import 'package:tenniscourt/src/widgets/ui/buttons/button.dart';
 import 'package:tenniscourt/src/widgets/ui/textformfield/custom_textformfield.dart';
@@ -83,12 +85,16 @@ class _RegisterFormState extends State<RegisterForm> {
             height: 40.0,
           ),
           Button(
-            onPressed: () {},
+            onPressed: onRegister,
             title: 'Registrarme',
             width: double.infinity,
           ),
         ],
       ),
     );
+  }
+
+  onRegister() {
+    context.go(HomeRoute.path);
   }
 }
